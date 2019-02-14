@@ -48,7 +48,7 @@ namespace graphics {
 			glGetShaderiv(vertex, GL_INFO_LOG_LENGTH, &length);
 			std::vector<char> error(length);
 			glGetShaderInfoLog(vertex, length, &length, &error[0]);
-			std::cout << "Failed to compile vertex shader!" << std::endl << &error[0] << std::endl;
+			LOG_ERROR("Failed to compile vertex shader!\n {0}", &error[0]);
 			glDeleteShader(vertex);
 			return 0;
 		}
@@ -63,7 +63,7 @@ namespace graphics {
 			glGetShaderiv(fragment, GL_INFO_LOG_LENGTH, &length);
 			std::vector<char> error(length);
 			glGetShaderInfoLog(fragment, length, &length, &error[0]);
-			std::cout << "Failed to compile fragment shader!" << std::endl << &error[0] << std::endl;
+			LOG_ERROR("Failed to compile fragment shader!\n {0} \n", &error[0]);
 			glDeleteShader(fragment);
 			return 0;
 		}

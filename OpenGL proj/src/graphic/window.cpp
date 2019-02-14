@@ -35,7 +35,7 @@ namespace graphics {
 		{
 			if (!glfwInit())
 			{
-				std::cout << "Failed to initialize GLFW!" << std::endl;
+				LOG_ERROR("Failed to initialize GLFW!");
 				return false;
 			}
 
@@ -43,7 +43,7 @@ namespace graphics {
 
 			if (!m_Window)
 			{
-				std::cout << "Failed to create GLFW window!" << std::endl;
+				LOG_ERROR("Failed to create GLFW window!");
 				return false;
 			}
 			glfwMakeContextCurrent(m_Window);
@@ -56,28 +56,32 @@ namespace graphics {
 
 			if (glewInit() != GLEW_OK)
 			{
-				std::cout << "Could not initialize GLEW!" << std::endl;
+				LOG_ERROR("Could not initialize GLEW!");
 				return false;
 			}
 
-			std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
+			LOG_INFO("OpenGL {0}", glGetString(GL_VERSION));
 			return true;
 		}
 
 		bool Window::isKeyPressed(unsigned int keycode) const
 		{
-			// TODO: Log this!
 			if (keycode >= MAX_KEYS)
+			{
+				LOG_ERROR("Out of MAX_KEYS range!");
 				return false;
+			}
 
 			return m_Keys[keycode];
 		}
 
 		bool Window::isMouseButtonPressed(unsigned int button) const
 		{
-			// TODO: Log this!
 			if (button >= MAX_BUTTONS)
+			{
+				LOG_ERROR("Out of MAX_BUTTONS range!");
 				return false;
+			}
 
 			return m_MouseButtons[button];
 		}

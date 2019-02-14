@@ -30,7 +30,6 @@ namespace graphics {
 		}
 		void pop()
 		{
-			// TODO: Add to log!
 			if (m_TransformationStack.size() > 1)
 				m_TransformationStack.pop_back();
 

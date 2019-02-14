@@ -7,7 +7,7 @@ class FileUtils
 {
 public:
 	static std::string read_file(const char* filepath)
-	{
+	{ 
 		FILE* file;
 		fopen_s(&file, filepath, "rt");
 		fseek(file, 0, SEEK_END);
